@@ -6,6 +6,7 @@ describe('template spec', () => {
     //Legende wird angezeigts
     cy.get('span:contains("Legende")').should('be.visible').click(); 
     cy.get('h1:contains("Legende")').should('be.visible');
+    cy.get('span:contains("TBAZH")').should('be.visible').click(); 
   })
 })
-
+ 
