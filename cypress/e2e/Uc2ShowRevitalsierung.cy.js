@@ -1,6 +1,6 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702431&y=1241245&scale=3225&basemap=arelkbackgroundzh')
+    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702625&y=1241896&scale=150&basemap=arelkbackgroundzh')
     cy.get('p:contains("Wasser")').click();
     cy.get('p:contains("Revitalisierungsplanung (Gewässerrevitalisierung)") + button').click();
 //TODO User sucht Gewässernamen
@@ -10,7 +10,7 @@ describe('template spec', () => {
     cy.get('span:contains(" AwelWBRevitwwwZH")').click(); 
     // Gewässerinformation
     cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
-    cy.get('button:contains("Drucken")').should('be.visible');
+    cy.get('div:contains("Zuständigkeit") + div:contains("kommunale Gewässer")').click();
   })
 })
 
