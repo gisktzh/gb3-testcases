@@ -1,5 +1,5 @@
 {
-  "name": "gb3-testcases",
+  "name": "gin-x-cypress-e2e-tests",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,27 +8,18 @@
     "format": "npx prettier \"**/*.{js,jsx,ts,tsx,html}\" --write"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.51.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "rxjs": "~7.4.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "cypress-multi-reporters": "^1.6.2",
+    "junit-report-merger": "^5.0.0",
+    "mocha-junit-reporter": "^2.2.0"
   },
   "//devDependencies": {
     "esbuild": "esbuild version should be updated as soon as fix is out: https://github.com/bahmutov/cypress-esbuild-preprocessor/issues/229"
   },
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^15.1.3",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
-    "@types/node": "^12.11.1",
-    "cypress": "^12.5.1",
-
-    "esbuild": "0.17.0",
-    "eslint-plugin-chai-friendly": "^0.7.2",
-    "husky": "^8.0.0",
-    "prettier": "2.8.3",
-    "typescript": "~4.5.2"
+    "cypress": "^12.3.0",
+    "cypress-mochawesome-reporter": "file:../..",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }
