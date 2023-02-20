@@ -1,12 +1,7 @@
 {
-  "name": "gin-x-cypress-e2e-tests",
+  "name": "gb3-testcases",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "prepare": "husky install",
-    "lint": "npx eslint \"**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
-    "format": "npx prettier \"**/*.{js,jsx,ts,tsx,html}\" --write"
-  },
   "dependencies": {
     "cypress-multi-reporters": "^1.6.2",
     "junit-report-merger": "^5.0.0",
