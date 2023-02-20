@@ -1,0 +1,24 @@
+trigger:
+  - main
+
+stages:
+  - stage: e2e_testing_stage_firefox
+    displayName: 'Firefox E2E Testing'
+    jobs:
+      - job: e2e_testing_job_firefox
+        displayName: 'Run E2E tests in Firefox'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: firefox
+      - job: e2e_testing_job_chrome
+        displayName: 'Run E2E tests in Chrome'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: chrome
+    # add additional stages for testing other browsers
