@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cypress": "^12.6.0",
+    "cypress-mochawesome-reporter": "^3.3.0"
+  }
+}
