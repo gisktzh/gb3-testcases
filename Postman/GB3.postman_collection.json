@@ -7,6 +7,49 @@
 	},
 	"item": [
 		{
+			"name": "Kartenliste",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseJson = pm.response.json();\r",
+							"var topics = [];\r",
+							" //Loop through the categories\r",
+							"for (let i = 0; i < responseJson.categories.length; i++) {\r",
+							" // Loop through the topics in each category\r",
+							" for (let j = 0; j < responseJson.categories[i].topics.length; j++) {\r",
+							"    topics.push(responseJson.categories[i].topics[j].topic);\r",
+							"  }\r",
+							"}\r",
+							"pm.environment.set(\"topics\", JSON.stringify(topics));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/topics?USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"topics"
+					],
+					"query": [
+						{
+							"key": "USER_TOKEN",
+							"value": "gEPQJiSv_Kgi8WEslF2N"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "EinzelneKartenAnfrage",
 			"event": [
 				{
@@ -59,49 +102,6 @@
 							"key": "queryLayers",
 							"value": "gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs"
 						},
-						{
-							"key": "USER_TOKEN",
-							"value": "gEPQJiSv_Kgi8WEslF2N"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Kartenliste",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let responseJson = pm.response.json();\r",
-							"var topics = [];\r",
-							" //Loop through the categories\r",
-							"for (let i = 0; i < responseJson.categories.length; i++) {\r",
-							" // Loop through the topics in each category\r",
-							" for (let j = 0; j < responseJson.categories[i].topics.length; j++) {\r",
-							"    topics.push(responseJson.categories[i].topics[j].topic);\r",
-							"  }\r",
-							"}\r",
-							"pm.environment.set(\"topics\", JSON.stringify(topics));"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/topics?USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"topics"
-					],
-					"query": [
 						{
 							"key": "USER_TOKEN",
 							"value": "gEPQJiSv_Kgi8WEslF2N"
