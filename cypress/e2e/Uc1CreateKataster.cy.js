@@ -5,9 +5,9 @@ describe('template spec', () => {
     cy.get('p:contains("ÖREB-Kataster") + button').click();
 //TODO Adresse suchen
 // Karte muss Liegenschaft markieren 
-    cy.get('map-page').click();
     cy.wait(3000);
-    cy.get('span:contains("OerebKatasterZH")').click(); 
+    cy.get('map-page').click();
+    cy.get('span:contains("OerebKatasterZH")', { timeout: 10000 }).click(); 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
