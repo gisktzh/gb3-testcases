@@ -1,5 +1,5 @@
 trigger:
-  - main
+  - CypressTestsUseCases
 
 stages:
   - stage: e2e_testing_stage_firefox
