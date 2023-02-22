@@ -7,109 +7,202 @@
 	},
 	"item": [
 		{
-			"name": "Kartenliste",
-			"event": [
+			"name": "GIZ_ZH",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let responseJson = pm.response.json();\r",
-							"var topics = [];\r",
-							" //Loop through the categories\r",
-							"for (let i = 0; i < responseJson.categories.length; i++) {\r",
-							" // Loop through the topics in each category\r",
-							" for (let j = 0; j < responseJson.categories[i].topics.length; j++) {\r",
-							"    topics.push(responseJson.categories[i].topics[j].topic);\r",
-							"  }\r",
-							"}\r",
-							"pm.environment.set(\"topics\", JSON.stringify(topics));"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/topics?USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"topics"
-					],
-					"query": [
-						{
-							"key": "USER_TOKEN",
-							"value": "gEPQJiSv_Kgi8WEslF2N"
+					"name": "https://geolion.zh.ch/geodatensatz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "EinzelneKartenAnfrage",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
-							"\r",
-							"if (topics.length > 0){\r",
-							"    postman.setNextRequest(\"EinzelneKartenAnfrage\");\r",
-							"}"
-						],
-						"type": "text/javascript"
-					}
+					},
+					"response": []
 				},
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
-							"\r",
-							"pm.environment.set(\"topic\", topics.shift())\r",
-							"\r",
-							"pm.environment.set(\"topics\", JSON.stringify(topics));\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/topics/{{topic}}/feature_info?bbox=2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038&queryLayers=gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs&USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"topics",
-						"{{topic}}",
-						"feature_info"
-					],
-					"query": [
-						{
-							"key": "bbox",
-							"value": "2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038"
-						},
-						{
-							"key": "queryLayers",
-							"value": "gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs"
-						},
-						{
-							"key": "USER_TOKEN",
-							"value": "gEPQJiSv_Kgi8WEslF2N"
+					"name": "https://geolion.zh.ch/geodatensatz/845",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz/845",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz",
+								"845"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "https://geolion.zh.ch/geodatensatz/645",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz/645",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz",
+								"645"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://geolion.zh.ch/geodatensatz/840",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz/840",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz",
+								"840"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "GB3-Api",
+			"item": [
+				{
+					"name": "Kartenliste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"var topics = [];\r",
+									" //Loop through the categories\r",
+									"for (let i = 0; i < responseJson.categories.length; i++) {\r",
+									" // Loop through the topics in each category\r",
+									" for (let j = 0; j < responseJson.categories[i].topics.length; j++) {\r",
+									"    topics.push(responseJson.categories[i].topics[j].topic);\r",
+									"  }\r",
+									"}\r",
+									"pm.environment.set(\"topics\", JSON.stringify(topics));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/topics?USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"topics"
+							],
+							"query": [
+								{
+									"key": "USER_TOKEN",
+									"value": "gEPQJiSv_Kgi8WEslF2N"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EinzelneKartenAnfrage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
+									"\r",
+									"if (topics.length > 0){\r",
+									"    postman.setNextRequest(\"EinzelneKartenAnfrage\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
+									"\r",
+									"pm.environment.set(\"topic\", topics.shift())\r",
+									"\r",
+									"pm.environment.set(\"topics\", JSON.stringify(topics));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/topics/{{topic}}/feature_info?bbox=2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038&queryLayers=gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs&USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"topics",
+								"{{topic}}",
+								"feature_info"
+							],
+							"query": [
+								{
+									"key": "bbox",
+									"value": "2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038"
+								},
+								{
+									"key": "queryLayers",
+									"value": "gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs"
+								},
+								{
+									"key": "USER_TOKEN",
+									"value": "gEPQJiSv_Kgi8WEslF2N"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
