@@ -3,7 +3,7 @@ trigger:
 
 stages:
   - stage: e2e_testing_stage_firefox
-    displayName: 'Firefox E2E Testing'
+    displayName: 'Edge E2E Testing'
     jobs:
       - job: e2e_testing_job_chrome
         displayName: 'Run E2E tests in Chrome'
@@ -12,5 +12,5 @@ stages:
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: chrome
+              browserType: edge
     # add additional stages for testing other browsers
