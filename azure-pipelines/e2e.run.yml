@@ -2,8 +2,8 @@ trigger:
   - CypressTestsUseCases
 
 stages:
-  - stage: e2e_testing_stage_firefox
-    displayName: 'Edge E2E Testing'
+  - stage: e2e_testing_stage_chrome
+    displayName: 'chrome E2E Testing'
     jobs:
       - job: e2e_testing_job_chrome
         displayName: 'Run E2E tests in Chrome'
@@ -12,5 +12,5 @@ stages:
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: edge
+              browserType: chrome
     # add additional stages for testing other browsers
