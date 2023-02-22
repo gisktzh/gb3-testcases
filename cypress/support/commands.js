@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('click_map_in_the_list', (name_of_the_map) => { 
+    cy.get('span:contains("' + name_of_the_map + '") > button').first().click();
+   });
+
+Cypress.Commands.add('select_topic', (name_of_the_topic) => { 
+    cy.get('p:contains("' + name_of_the_topic + '")').click();
+   });
+
+   Cypress.Commands.add('open_url_with_cordinates', (name_of_the_topic) => { 
+    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702555&y=1241686&scale=251&basemap=arelkbackgroundzh');
+   });

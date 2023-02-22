@@ -1,8 +1,8 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702340&y=1241817&scale=148&basemap=arelkbackgroundzh')
-    cy.get('p:contains("Verkehr")').click();
-    cy.get('p:contains("Strassennetz") + button').click();
+    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702568&y=1242020&scale=150&basemap=arelkbackgroundzh');
+    cy.select_topic("Verkehr");
+    cy.click_map_in_the_list("Strassennetz");
 //TODO User sucht Verkehrstehnik
 //User klickt auf markierte Verkehrstehnik um die informationen anzuzeigen
     // Richtig auf de Karte cklicken

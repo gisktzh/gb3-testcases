@@ -1,10 +1,10 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702431&y=1241245&scale=3225&basemap=arelkbackgroundzh')
+    cy.open_url_with_cordinates();
     //User wählt megr als eine Karte
-    cy.get('p:contains("Verkehr")').click();
-    cy.get('p:contains("Strassennetz") + button').click();
-    cy.get('p:contains("Verkehrsbaulinien") + button').click();
+    cy.select_topic("Verkehr");
+    cy.click_map_in_the_list("Strassennetz");
+    cy.click_map_in_the_list("Verkehrsbaulinien");
      //beide Karten sind ausgewählt und angezeigt.
      cy.get('button + p:contains("Strassennetz")').should('be.visible');
      cy.get('button + p:contains("Verkehrsbaulinien")').should('be.visible');

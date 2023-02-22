@@ -1,12 +1,12 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702555&y=1241686&scale=251&basemap=arelkbackgroundzh')
-    cy.get('p:contains("Raumplanung, Zonenpläne")').click();
-    cy.get('p:contains("ÖREB-Kataster") + button').click();
+    cy.open_url_with_cordinates();
+    cy.select_topic("Raumplanung, Zonenpläne");
+    cy.click_map_in_the_list("ÖREB-Kataster");
 //TODO Adresse suchen
 // Karte muss Liegenschaft markieren 
     cy.get('map-page').click();
-    cy.get('span:contains("OerebKatasterZH")', { timeout: 100000 }).click(); 
+    cy.get('span:contains("OerebKatasterZH")', { timeout: 30000 }).click(); 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
