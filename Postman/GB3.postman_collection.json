@@ -49,48 +49,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "https://geolion.zh.ch/geodatensatz/645",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://geolion.zh.ch/geodatensatz/645",
-							"protocol": "https",
-							"host": [
-								"geolion",
-								"zh",
-								"ch"
-							],
-							"path": [
-								"geodatensatz",
-								"645"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "https://geolion.zh.ch/geodatensatz/840",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://geolion.zh.ch/geodatensatz/840",
-							"protocol": "https",
-							"host": [
-								"geolion",
-								"zh",
-								"ch"
-							],
-							"path": [
-								"geodatensatz",
-								"840"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
