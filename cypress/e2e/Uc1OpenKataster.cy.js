@@ -7,7 +7,7 @@ describe('template spec', () => {
 // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded
     cy.get('map-page').should('exist').and('be.visible').click();
-    cy.intercept({ method: 'GET', url: '*' }).as("results");
+    cy.intercept({ method: 'GET', url: '**/feature_info?**' }).as("results");
     cy.wait("@results");
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click(); 
     // Highlights auswählen 
