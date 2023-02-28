@@ -47,13 +47,6 @@ steps:
     displayName: 'publish screenshots'
     condition: always()
     inputs:
-      pathToPublish: 'cypress/screenshots'
-      artifactName: screenshots-${{ parameters.browserType }}
-    continueOnError: true
-  - task: PublishBuildArtifacts@2
-    displayName: 'publish videos'
-    condition: always()
-    inputs:
       pathToPublish: 'cypress/videos'
-      artifactName: videos-${{ parameters.browserType }}
+      artifactName: screenshots-${{ parameters.browserType }}
     continueOnError: true
