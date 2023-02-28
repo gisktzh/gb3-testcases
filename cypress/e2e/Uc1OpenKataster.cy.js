@@ -8,8 +8,10 @@ describe('template spec', () => {
     //wait until request is fully loaded
     cy.get('map-page').should('exist').and('be.visible').click();
     cy.intercept({ method: 'GET', url: '**/feature_info?**' }).as("results");
-    cy.wait("@results").then((xhr) => {
-      return (xhr.status === 200);
+    cy.wait("@results").its('response')
+    .should('deep.include', {
+      statusCode: 200,
+      statusMessage: 'OK'
     });
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click(); 
     // Highlights auswählen 
