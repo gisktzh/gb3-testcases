@@ -8,7 +8,9 @@ describe('template spec', () => {
     //wait until request is fully loaded
     cy.get('map-page').should('exist').and('be.visible').click();
     cy.intercept({ method: 'GET', url: '**/feature_info?**' }).as("results");
-    cy.wait("@results");
+    cy.wait("@results").then((xhr) => {
+      return (xhr.status === 200);
+    });
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click(); 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
