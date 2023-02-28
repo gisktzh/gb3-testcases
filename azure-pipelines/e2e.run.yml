@@ -12,5 +12,5 @@ stages:
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: chrome
+              browserType: firefox
     # add additional stages for testing other browsers
