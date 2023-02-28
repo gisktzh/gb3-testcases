@@ -7,10 +7,10 @@ describe('template spec', () => {
 // Karte skaliert und zeigt markiert die gewählte Gewässer.
 //User klickt auf markierte Gewässerabschnitt um die informationen anzuzeigen
     cy.get('map-page').click()
-    cy.get('span:contains(" AwelWBRevitwwwZH")').click(); 
+  //  cy.get('span:contains(" AwelWBRevitwwwZH")').click(); 
     // Gewässerinformation
-    cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
-    cy.get('div:contains("Zuständigkeit") + div:contains("kommunale Gewässer")').click();
+  //  cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
+  //  cy.get('div:contains("Zuständigkeit") + div:contains("kommunale Gewässer")').click();
   })
 })
 

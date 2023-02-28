@@ -47,6 +47,6 @@ steps:
     displayName: 'publish screenshots'
     condition: always()
     inputs:
-      pathToPublish: 'cypress/videos'
+      pathToPublish: 'cypress/screenshots'
       artifactName: screenshots-${{ parameters.browserType }}
     continueOnError: true
