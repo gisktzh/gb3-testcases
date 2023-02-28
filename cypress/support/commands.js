@@ -35,4 +35,5 @@ Cypress.Commands.add('select_topic', (name_of_the_topic) => {
 
    Cypress.Commands.add('open_url_with_cordinates', (name_of_the_topic) => { 
     cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702555&y=1241686&scale=251&basemap=arelkbackgroundzh');
+    cy.get('span:contains("Überspringen ")').click();
    });
