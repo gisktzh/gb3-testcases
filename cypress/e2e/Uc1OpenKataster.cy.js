@@ -15,6 +15,7 @@ describe('template spec', () => {
 
     cy.wait("@results").its('response.statusCode').should('eq', 200);
 
+    cy.wait(30000);
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click();
 
     // Highlights auswählen 
