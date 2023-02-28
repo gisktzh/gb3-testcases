@@ -7,6 +7,11 @@ describe('template spec', () => {
 // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded
     cy.get('map-page').click();
+    cy.intercept('GET','*', {
+    }).as('results');
+    cy.wait('@results').then(({response }) => {
+      expect(response.body).not.to.be.null;
+    });
     cy.get('span:contains("OerebKatasterZH")').should('exist').click(); 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
