@@ -6,8 +6,10 @@ describe('template spec', () => {
 //TODO Adresse suchen
 // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded
-    cy.get('map-page', { timeout: 3000 }).click();
-    cy.get('span:contains("OerebKatasterZH")', { timeout: 3000 }).should('exist').click(); 
+    cy.get('map-page').should('exist').and('be.visible').click();
+    cy.intercept({ method: 'GET', url: '*' }).as("results");
+    cy.wait("@results");
+    cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click(); 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
