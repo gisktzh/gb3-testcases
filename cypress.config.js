@@ -5,7 +5,7 @@ module.exports = {
     toConsole: true,
     attachments: true
   },
-  video: true,
+  video: false,
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
