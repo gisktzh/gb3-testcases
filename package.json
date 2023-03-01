@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cypress": "^12.6.0",
+    "cypress": "^10.10.0",
     "cypress-mochawesome-reporter": "^3.3.0",
     "junit-report-merger": "^5.0.0",
     "mocha-junit-reporter": "^2.2.0"
