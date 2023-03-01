@@ -5,7 +5,7 @@ stages:
   - stage: e2e_testing_stage
     displayName: 'E2E Testing'
     jobs:
-      - job: e2e_testing_job_firex
+      - job: e2e_testing_job_electron
         displayName: 'Run E2E tests in electron'
         pool:
           vmImage: 'ubuntu-latest'
@@ -13,7 +13,7 @@ stages:
           - template: e2e.testing.yml
             parameters:
               browserType: electron 
-      - job: e2e_testing_job_firex
+      - job: e2e_testing_job_chromium
         displayName: 'Run E2E tests in chromium'
         pool:
           vmImage: 'ubuntu-latest'
