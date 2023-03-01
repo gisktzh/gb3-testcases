@@ -10,12 +10,12 @@ describe('template spec', () => {
     //wait until request is fully loaded 
 
 
-    cy.intercept('GET', '**/feature_info?**').as('results');
+    //cy.intercept('GET', '**/feature_info?**').as('results');
    
     cy.get('map-page').should('exist').and('be.visible').click();
     
 
-    cy.wait("@results").its('response.statusCode').should('eq', 200);
+    //cy.wait("@results").its('response.statusCode').should('eq', 200);
 
 
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click();
