@@ -5,6 +5,9 @@ module.exports = {
     toConsole: true,
     attachments: true
   },
+  requestTimeout: 10000,
+  responseTimeout: 10000,
+  pageLoadTimeout: 20000,
   video: false,
   e2e: {
     setupNodeEvents(on, config) {
