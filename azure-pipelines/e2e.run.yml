@@ -13,12 +13,12 @@ stages:
           - template: e2e.testing.yml
             parameters:
               browserType: electron 
-      - job: e2e_testing_job_chromium
-        displayName: 'Run E2E tests in chromium'
+      - job: e2e_testing_job_chrome
+        displayName: 'Run E2E tests in chrome'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: chromium
+              browserType: chrome
     # add additional stages for testing other browsers
