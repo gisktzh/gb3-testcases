@@ -21,8 +21,8 @@ stages:
           - template: e2e.testing.yml
             parameters:
               browserType: chrome
-      - job: e2e_testing_job_chrome
-        displayName: 'Run E2E tests in firefox'
+      - job: e2e_testing_job_edge
+        displayName: 'Run E2E tests in edge'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
