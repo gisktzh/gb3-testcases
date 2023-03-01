@@ -6,11 +6,11 @@ stages:
     displayName: 'E2E Testing'
     jobs:
       - job: e2e_testing_job_firex
-        displayName: 'Run E2E tests in chrome'
+        displayName: 'Run E2E tests in electrone'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: chrome 
+              browserType: electrone 
     # add additional stages for testing other browsers
