@@ -2,9 +2,17 @@ trigger:
   - CypressTestsUseCases
 
 stages:
-  - stage: e2e_testing_stage_chrome
-    displayName: 'chrome E2E Testing'
+  - stage: e2e_testing_stage_fireox
+    displayName: 'firefox E2E Testing'
     jobs:
+      - job: e2e_testing_job_chrome
+        displayName: 'Run E2E tests in firefox'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: firefox 
       - job: e2e_testing_job_chrome
         displayName: 'Run E2E tests in Chrome'
         pool:
@@ -12,5 +20,13 @@ stages:
         steps:
           - template: e2e.testing.yml
             parameters:
-              browserType: chrome 
+              browserType: chrome
+      - job: e2e_testing_job_chrome
+        displayName: 'Run E2E tests in firefox'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: edge 
     # add additional stages for testing other browsers
