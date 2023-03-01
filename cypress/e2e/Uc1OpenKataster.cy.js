@@ -17,6 +17,7 @@ describe('template spec', () => {
 
     //cy.wait("@results").its('response.statusCode').should('eq', 200);
 
+    cy.get('h1:contains("Resultate")').should('exist').and('be.visible').click();
 
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click();
 
