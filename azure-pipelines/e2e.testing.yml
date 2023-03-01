@@ -29,7 +29,7 @@ steps:
     displayName: 'Replace env tokens'
 
   - script: |
-      npx cypress run --browser --headed ${{ parameters.browserType }} --reporter junit
+      npx cypress run --browser ${{ parameters.browserType }} --reporter junit
     displayName: 'Run Cypress tests'
     env:
       # avoid warnings about terminal
