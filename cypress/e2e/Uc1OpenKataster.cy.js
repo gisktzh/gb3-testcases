@@ -4,24 +4,24 @@ describe('template spec', () => {
     cy.select_topic("Raumplanung, Zonenpläne");
 
     cy.click_map_in_the_list("ÖREB-Kataster");
-    cy.wait(3000);
+    
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded 
 
 
-    //cy.intercept('GET', '**/feature_info?**').as('results');
+    cy.intercept('GET', '**/feature_info?**').as('results');
    
     cy.get('map-page').should('exist').and('be.visible').click();
     
 
-    //cy.wait("@results").its('response.statusCode').should('eq', 200);
+    cy.wait("@results").its('response.statusCode').should('eq', 200);
 
     cy.get('h1:contains("Resultate")').should('exist').and('be.visible').click();
 
     cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click();
 
-     // Highlights auswählen 
+    // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
     cy.get('div:contains("Fläche") + div:contains("1704")').should('be.visible');
