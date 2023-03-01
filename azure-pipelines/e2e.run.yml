@@ -2,10 +2,10 @@ trigger:
   - CypressTestsUseCases
 
 stages:
-  - stage: e2e_testing_stage_fireox
-    displayName: 'firefox E2E Testing'
+  - stage: e2e_testing_stage
+    displayName: 'E2E Testing'
     jobs:
-      - job: e2e_testing_job_chrome
+      - job: e2e_testing_job_firex
         displayName: 'Run E2E tests in firefox'
         pool:
           vmImage: 'ubuntu-latest'
