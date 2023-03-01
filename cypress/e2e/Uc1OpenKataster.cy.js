@@ -3,8 +3,13 @@ describe('template spec', () => {
     cy.open_url_with_cordinates();
     cy.select_topic("Raumplanung, Zonenpläne");
 
+    cy.intercept('GET', '**/OerebKatasterZH?**').as('kataster');
+
     cy.click_map_in_the_list("ÖREB-Kataster");
-    
+
+    cy.wait("@kataster").its('response.statusCode').should('eq', 200);
+
+
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded 
