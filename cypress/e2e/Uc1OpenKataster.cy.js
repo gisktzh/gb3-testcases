@@ -16,7 +16,7 @@ describe('template spec', () => {
 
     cy.intercept('GET', '**/feature_info?**').as('results');
    
-    cy.get('map-page').should('exist').and('be.visible').click();
+    cy.get('map-page', {timeout: 5000}).should('exist').and('be.visible').click();
     
 
     cy.wait("@results").its('response.statusCode').should('eq', 200);
