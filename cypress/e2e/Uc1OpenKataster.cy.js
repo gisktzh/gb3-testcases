@@ -18,6 +18,8 @@ describe('Open kataster', () => {
     // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded 
 
+    cy.clearCookies();
+
     cy.get('map-page').should('exist').and('be.visible').click();
 
     cy.wait("@results").should(xhr => {
