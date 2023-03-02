@@ -20,11 +20,11 @@ describe('Open kataster', () => {
 
     cy.get('map-page').should('exist').and('be.visible').click();
 
-    cy.wait("@results", { timeout: 90000 });
+    cy.wait("@results");
   
     cy.get('h1:contains("Resultate")').should('exist').and('be.visible').click();
 
-    cy.get('span:contains("OerebKatasterZH")').should('exist').and('be.visible').click();
+    cy.get('span:contains("OerebKatasterZH")', { timeout: 90000 }).should('exist').and('be.visible').click();
 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
