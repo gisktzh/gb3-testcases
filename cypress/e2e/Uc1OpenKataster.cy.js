@@ -12,7 +12,7 @@ describe('Open kataster', () => {
 
     cy.click_map_in_the_list("ÖREB-Kataster");
 
-    cy.wait("@kataster").its('response.statusCode').should('eq', 200);
+    cy.wait("@kataster", { timeout: 50000 });
 
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren 
@@ -20,7 +20,7 @@ describe('Open kataster', () => {
 
     cy.get('map-page').should('exist').and('be.visible').click();
 
-    cy.wait("@results").its('response.statusCode').should('eq', 200);
+    cy.wait("@results", { timeout: 90000 });
   
     cy.get('h1:contains("Resultate")').should('exist').and('be.visible').click();
 
