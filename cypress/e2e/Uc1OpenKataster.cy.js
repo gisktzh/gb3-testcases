@@ -12,8 +12,8 @@ describe('Open kataster', () => {
 
     cy.click_map_in_the_list("ÖREB-Kataster");
 
-    cy.wait("@kataster", { timeout: 50000 });
-
+    cy.wait("@kataster");
+    cy.wait(100000);
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded 
