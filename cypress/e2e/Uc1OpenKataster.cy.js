@@ -18,17 +18,16 @@ describe('Open kataster', () => {
     // Karte muss Liegenschaft markieren 
     //wait until request is fully loaded 
 
-    cy.clearCookies();
-
     cy.get('map-page').should('exist').and('be.visible').click();
 
-    cy.wait("@results").should(xhr => {
+    cy.wait("@results").then(xhr => {
+      cy.log(xhr.request.url);
       expect(xhr.response.body).to.have.property('feature_info');
-  });
-  
+    });
+
     cy.get('h1:contains("Resultate")').should('exist').and('be.visible');
 
-    cy.get('span:contains("OerebKatasterZH")', { timeout: 90000 }).should('be.visible').click();
+    cy.get('span:contains("OerebKatasterZH")', { timeout: 20000 }).should('be.visible').click();
 
     // Highlights auswählen 
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
