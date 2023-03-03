@@ -1,6 +1,5 @@
-import './commands/open_url_with_cordinates.commands';
-import './commands/select_topic.command';
-import './commands/click_map_in_the_listc.command';
+import './commands';
+
 
 declare global {
   namespace Cypress {
