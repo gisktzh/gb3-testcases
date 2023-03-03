@@ -1,0 +1,7 @@
+screenshots/*
+videos/*
+downloads/*
+cypress/results/*
+node_modules
+*.json
+cypress.env.json.example

@@ -1,0 +1,24 @@
+trigger:
+  - CypressTestsUseCases
+
+stages:
+  - stage: e2e_testing_stage
+    displayName: 'E2E Testing'
+    jobs:
+      - job: e2e_testing_job_electron
+        displayName: 'Run E2E tests in electron'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: electron 
+      - job: e2e_testing_job_chrome
+        displayName: 'Run E2E tests in chrome'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yml
+            parameters:
+              browserType: chrome
+    # add additional stages for testing other browsers
