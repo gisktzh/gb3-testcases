@@ -1,5 +1,5 @@
 trigger:
-  - CypressTestsUseCases
+  - main
 
 stages:
   - stage: e2e_testing_stage
