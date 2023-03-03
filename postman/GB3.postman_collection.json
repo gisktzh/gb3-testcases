@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "bd544674-c90c-4569-9056-237a39f4a8b1",
+		"name": "GB3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25166465"
+	},
+	"item": [
+		{
+			"name": "GIZ_ZH",
+			"item": [
+				{
+					"name": "https://geolion.zh.ch/geodatensatz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://geolion.zh.ch/geodatensatz/845",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://geolion.zh.ch/geodatensatz/845",
+							"protocol": "https",
+							"host": [
+								"geolion",
+								"zh",
+								"ch"
+							],
+							"path": [
+								"geodatensatz",
+								"845"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GB3-Api",
+			"item": [
+				{
+					"name": "Kartenliste",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"var topics = [];\r",
+									" //Loop through the categories\r",
+									"for (let i = 0; i < responseJson.categories.length; i++) {\r",
+									" // Loop through the topics in each category\r",
+									" for (let j = 0; j < responseJson.categories[i].topics.length; j++) {\r",
+									"    topics.push(responseJson.categories[i].topics[j].topic);\r",
+									"  }\r",
+									"}\r",
+									"pm.environment.set(\"topics\", JSON.stringify(topics));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/topics?USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"topics"
+							],
+							"query": [
+								{
+									"key": "USER_TOKEN",
+									"value": "gEPQJiSv_Kgi8WEslF2N"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EinzelneKartenAnfrage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
+									"\r",
+									"if (topics.length > 0){\r",
+									"    postman.setNextRequest(\"EinzelneKartenAnfrage\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let topics = JSON.parse(pm.environment.get(\"topics\"));\r",
+									"\r",
+									"pm.environment.set(\"topic\", topics.shift())\r",
+									"\r",
+									"pm.environment.set(\"topics\", JSON.stringify(topics));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/topics/{{topic}}/feature_info?bbox=2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038&queryLayers=gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs&USER_TOKEN=gEPQJiSv_Kgi8WEslF2N",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"topics",
+								"{{topic}}",
+								"feature_info"
+							],
+							"query": [
+								{
+									"key": "bbox",
+									"value": "2702341.356529172,1241820.9907855038,2702341.356529172,1241820.9907855038"
+								},
+								{
+									"key": "queryLayers",
+									"value": "gemeindegrenzen,kilometrierung,strassentypisierung-nach-richtplan,strasseneigentum,weitere-strassenattribute,haupt-und-nebenstrassen,kilometrierung-rbbs"
+								},
+								{
+									"key": "USER_TOKEN",
+									"value": "gEPQJiSv_Kgi8WEslF2N"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response is ok\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"pm.test(\"Content-Type is present\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"});"
+				]
+			}
+		}
+	]
+}
