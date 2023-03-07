@@ -5,7 +5,7 @@ beforeEach(() => {
 
 describe('Open kataster', () => {
   it('passes', () => {
-    cy.open_url_with_cordinates('2702555','1241686');
+    cy.open_url_with_cordinates('2702555', '1241686');
 
     cy.select_topic('Raumplanung, Zonenpläne');
 

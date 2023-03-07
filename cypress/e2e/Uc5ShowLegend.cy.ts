@@ -1,6 +1,6 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.open_url_with_cordinates('2702555','1241686');
+    cy.open_url_with_cordinates('2702555', '1241686');
     cy.select_topic('Verkehr');
     cy.click_map_in_the_list('Strassennetz');
     cy.select_topic('Raumplanung, Zonenpläne');
@@ -18,4 +18,3 @@ describe('template spec', () => {
     cy.get('span:contains("OerebKatasterZH")').should('not.exist');
   });
 });
- 
