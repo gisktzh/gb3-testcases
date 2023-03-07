@@ -5,14 +5,15 @@ beforeEach(() => {
 
 describe('Open kataster', () => {
   it('passes', () => {
-    cy.open_url_with_cordinates();
+    cy.open_url_with_cordinates('2702555','1241686');
 
     cy.select_topic('Raumplanung, Zonenpläne');
 
     cy.click_map_in_the_list('ÖREB-Kataster');
 
     cy.wait('@kataster');
-    cy.wait(3000);
+
+    cy.wait(2000);
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren
     //wait until request is fully loaded

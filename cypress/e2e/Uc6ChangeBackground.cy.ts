@@ -1,6 +1,6 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.open_url_with_cordinates();
+    cy.open_url_with_cordinates('2702555','1241686');
     cy.get('.basemap-selector').click();
     //User wählt Hinergrund
     cy.get('img[alt="Digitales Terrainmodell"]').click({force: true});

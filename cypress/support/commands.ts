@@ -36,16 +36,20 @@
 //   }
 // }
 Cypress.Commands.add('click_map_in_the_list', (name_of_the_map: string) => {
-  cy.get('span:contains("' + name_of_the_map + '") > button')
+  cy.get('span:contains("' + name_of_the_map + '") > button[data-test-id="add-active-map"]')
     .first()
     .click();
+});
+
+Cypress.Commands.add('click_by_data_test_id', (test_id: string) => {
+  cy.get('[data-test-id="' + test_id + '"]').click();
 });
 
 Cypress.Commands.add('select_topic', (name_of_the_topic: string) => {
   cy.get('p:contains("' + name_of_the_topic + '")').click();
 });
 
-Cypress.Commands.add('open_url_with_cordinates', () => {
-  cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=2702555&y=1241686&scale=251&basemap=arelkbackgroundzh');
+Cypress.Commands.add('open_url_with_cordinates', (x: string, y: string ) => {
+  cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
   cy.get('span:contains("Überspringen ")').click();
 });
