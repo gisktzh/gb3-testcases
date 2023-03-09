@@ -6,5 +6,10 @@ describe('template spec', () => {
     cy.get('img[alt="Digitales Terrainmodell"]').click({force: true});
     //richtige Hintergrund ist angezeigt.
     cy.get('img[alt="Aktuelle Hintergrundkarte"]').should('have.attr', 'src', 'assets/images/basemaps/aredtmbackgroundzh.png');
+    //User wählt andere Hinergrund
+    cy.get('.basemap-selector').click();
+    cy.get('img[alt="Landeskarte"]').click({force: true});
+    //richtige Hintergrund ist angezeigt.
+    cy.get('img[alt="Aktuelle Hintergrundkarte"]').should('have.attr', 'src', 'assets/images/basemaps/arelkbackgroundzh.png');
   });
 });

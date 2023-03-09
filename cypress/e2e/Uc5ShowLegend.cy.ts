@@ -11,7 +11,7 @@ describe('template spec', () => {
     cy.get('span:contains("TBAZH")').should('be.visible');
     cy.get('span:contains("OerebKatasterZH")').should('be.visible');
     cy.get('legend-widget > map-overlay > mat-card > mat-card-header > button').click();
-    // Eine Karte wird ausgeschaltet, Legende wird richtig agezeigt.
+    // Eine Karte wird abgeschaltet, Legende wird richtig agezeigt.
     cy.get('p:contains("ÖREB-Kataster") + button').first().click();
     cy.get('span:contains("Legende")').should('be.visible').click();
     cy.get('h1:contains("Legende")').should('be.visible');
