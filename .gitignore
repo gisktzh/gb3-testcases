@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=cypressio,node
 
 ### CypressIO ###
-# gitignore template for the CypressIO, browser test framework
+# gitignore template for the CypressIO, browser test framework.
 # website: https://www.cypress.io/
 
 cypress/results/*
