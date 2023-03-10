@@ -43,10 +43,10 @@ steps:
       testResultsFiles: '**/gb3-test-output-*.xml'
       failTaskOnFailedTests: true
 
-  - task: PublishBuildArtifacts@0
+  - task: PublishBuildArtifacts@1
     displayName: 'publish screenshots'
     condition: always()
     inputs:
-      artifactName: screenshots-${{ parameters.browserType }}
       pathToPublish: 'cypress/screenshots'
+      artifactName: screenshots-${{ parameters.browserType }}
     continueOnError: true
