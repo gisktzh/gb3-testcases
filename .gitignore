@@ -8,6 +8,7 @@
 cypress/results/*
 cypress/reports/*
 cypress/screenshots/*
+!cypress/screenshots/.gitkeep
 cypress/videos/*
 
 ### Node ###
