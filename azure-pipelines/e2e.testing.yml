@@ -2,16 +2,7 @@ steps:
   - task: NodeTool@0
     inputs:
       versionSpec: '18.x'
-      displayName: 'Install Node.js'
-  - task: Cache@2
-    displayName: 'Cache npm'
-    inputs:
-      key: 'npm | "$(Agent.OS)" | package-lock.json'
-      restoreKeys: |
-        npm | "$(Agent.OS)"
-        npm
-      path: $(npm_config_cache)
-    
+      displayName: 'Install Node.js'    
   # Install Node dependencies
   - script: npm ci
     displayName: 'Install NPM dependencies'
@@ -21,12 +12,6 @@ steps:
 
   - script: npx cypress info
     displayName: 'Cypress info'
-
-  - task: qetza.replacetokens.replacetokens-task.replacetokens@3
-    inputs:
-      targetFiles: |
-        **/cypress.config.js
-    displayName: 'Replace env tokens'
 
   - script: |
       npx cypress run --browser ${{ parameters.browserType }} --reporter junit
