@@ -13,6 +13,12 @@ steps:
   - script: npx cypress info
     displayName: 'Cypress info'
 
+  - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+    inputs:
+      targetFiles: |
+        **/cypress.config.ts
+    displayName: 'Replace env tokens'
+    
   - script: |
       npx cypress run --browser ${{ parameters.browserType }} --reporter junit
     displayName: 'Run Cypress tests'
