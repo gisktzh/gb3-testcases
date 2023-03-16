@@ -18,8 +18,8 @@ export default defineConfig({
     // gb3BaseUrl: 'https://calm-plant-0ecbec603.2.azurestaticapps.net/'
     //eIAMAuthUrl: 'https://idp-egov-private.gate-r.eiam.admin.ch/auth/saml2/broker/',
     //cookieName: 'JSESSIONID',
-  eIAM_username: '#{EIAM.Username}#', //keep this naming pattern as username and password will be replaced in the pipeline
-  eIAM_password: '#{EIAM.Password}#'
+    eIAM_username: '#{EIAM.Username}#', //keep this naming pattern as username and password will be replaced in the pipeline
+    eIAM_password: '#{EIAM.Password}#'
   },
   e2e: {
     setupNodeEvents(on, config) {
