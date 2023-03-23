@@ -1,7 +1,7 @@
 beforeEach(() => {
   cy.intercept('https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?**').as('results');
 });
- 
+
 describe('template spec', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702604', '1241901');
