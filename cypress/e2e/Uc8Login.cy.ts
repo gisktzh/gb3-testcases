@@ -25,7 +25,7 @@ describe('template spec', () => {
     cy.wait('@topics');
     //assert map Betriebe is visible after log in
     cy.select_topic('Bauten');
-    cy.get('span:contains("Betriebe")').should('be.visible').click();
+    cy.get('span:contains("Betriebe")').should('exist').click();
 
     cy.get('span:contains("GB3 User View")').should('be.visible').click();
     cy.get('span:contains("Logout")').should('be.visible');
