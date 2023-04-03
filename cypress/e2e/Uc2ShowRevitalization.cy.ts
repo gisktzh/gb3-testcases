@@ -10,9 +10,6 @@ describe('template spec', () => {
 
     cy.wait(2000);
 
-    //TODO User sucht Gewässernamen
-    // Karte skaliert und zeigt markiert die gewählte Gewässer.
-    //User klickt auf markierte Gewässerabschnitt um die informationen anzuzeigen
     cy.get('map-page').should('exist').and('be.visible').click();
 
     cy.wait('@results').then((xhr) => {

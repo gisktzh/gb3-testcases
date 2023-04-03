@@ -1,20 +1,10 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('Login', () => {
+  it('Login', () => {
     cy.open_url_with_cordinates('2682260', '1248390');
     //assert map Betriebe is not visible
     cy.select_topic('Bauten');
 
-    cy.get('span:contains("Betriebe")').should('not.be.exist');
-
-    cy.get('span:contains("Login")').click();
-
-    cy.origin('https://maps.zh.ch', () => {
-      const userName: string = Cypress.env('eIAM_username') as string;
-      const password: string = Cypress.env('eIAM_password') as string;
-      cy.get('#user_login').type(userName);
-      cy.get('#user_password').type(password);
-      cy.get('input[value="Login"]').click();
-    });
+    cy.login();
 
     cy.get('span:contains("GIS-Browser")').last().click();
     //assert request send authorization token

@@ -53,3 +53,19 @@ Cypress.Commands.add('open_url_with_cordinates', (x: string, y: string) => {
   cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
   cy.get('span:contains("Überspringen ")').click();
 });
+
+
+Cypress.Commands.add('login', () => {
+  cy.get('span:contains("Betriebe")').should('not.be.exist');
+
+  cy.get('span:contains("Login")').click();
+
+  cy.origin('https://maps.zh.ch', () => {
+    const userName: string = Cypress.env('eIAM_username') as string;
+    const password: string = Cypress.env('eIAM_password') as string;
+    cy.get('#user_login').type(userName);
+    cy.get('#user_password').type(password);
+    cy.get('input[value="Login"]').click();
+  });
+
+});
