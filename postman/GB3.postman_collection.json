@@ -161,6 +161,482 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Search-Api",
+			"item": [
+				{
+					"name": "PreRequestForActivation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find street",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Adress information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
+									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
+									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(no).not.to.be.empty;\r",
+									"    pm.expect(no).equal(\"287\");\r",
+									"    pm.expect(streetValue).equal(\"Seefeldstrasse\");\r",
+									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Seefeldstrasse+287",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Seefeldstrasse+287"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong street",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Adress information is not present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    //assert that there is no results;\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).to.eq(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=test+999",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "test+999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Street with 3 words",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Adress information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
+									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
+									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(no).not.to.be.empty;\r",
+									"    pm.expect(no).equal(\"17\");\r",
+									"    pm.expect(streetValue).equal(\"In der Ey\");\r",
+									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=in+der+Ey+17",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "in+der+Ey+17"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Street with umlauts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Adress information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
+									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
+									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(no).not.to.be.empty;\r",
+									"    pm.expect(no).equal(\"50\");\r",
+									"    pm.expect(streetValue).equal(\"Fröhlichstrasse\");\r",
+									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Fr%C3%B6hlichstrasse+50",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Fr%C3%B6hlichstrasse+50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Street multiple results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Adress information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).to.eq(10);\r",
+									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(streetValue).equal(\"Zürichstrasse\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Z%C3%BCrichstrasse+1",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Z%C3%BCrichstrasse+1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find City",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Town information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
+									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).equal(\"Bubikon\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Bubikon",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Bubikon"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong city",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Town information is not present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    //assert that there is no results;\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).to.eq(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Walhala",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Walhala"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "City with umlauts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Town information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
+									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Zürich",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Zürich"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "City with 3 wods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Town information is present\", function () {\r",
+									"    let responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.results[1].data.hits.hits.length).not.to.eq(0);\r",
+									"    const townValue = responseJson.results[1].data.hits.hits[0]._source.name;\r",
+									"    pm.expect(townValue).not.to.be.empty;\r",
+									"    pm.expect(townValue).equal(\"Neu St. Johann\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Neu+Sankt+Johann",
+							"protocol": "https",
+							"host": [
+								"gb3-search-api",
+								"icycliff-4b8f6c95",
+								"switzerlandnorth",
+								"azurecontainerapps",
+								"io"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "indexes",
+									"value": "fme-addresses%2Cfme-places"
+								},
+								{
+									"key": "term",
+									"value": "Neu+Sankt+Johann"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
