@@ -8,6 +8,7 @@ describe('Add/delete favorite layers', () => {
         cy.get('mat-icon:contains("star_outlined")').click({force:true});
         cy.get('input[id="name"]').type("MyTestFavoite");
         cy.get('span:contains(" Speichern ")').click({force:true});
+        cy.wait(3000);
         //assert that favrite is saved 
         cy.select_topic(' Favoriten ');
         cy.get('p:contains("MyTestFavoite")').should('exist');

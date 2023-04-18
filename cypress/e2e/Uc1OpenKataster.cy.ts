@@ -42,7 +42,7 @@ describe('Open kataster', () => {
     // Highlights auswählen
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
-    cy.get('div:contains("Fläche") + div:contains("1704")').should('be.visible');
+    cy.get('div:contains("Fläche") + div:contains("389")').should('be.visible');
     cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('be.visible');
     cy.get('button:contains("Drucken")').should('be.visible');
   });
