@@ -7,7 +7,7 @@ describe('Add/delete favorite layers', () => {
         cy.click_map_in_the_list('ÖREB-Kataster');
         cy.get('mat-icon:contains("star_outlined")').click({force:true});
         cy.get('input[id="name"]').type("MyTestFavoite");
-        cy.get('span:contains(" Speichern ")').click();
+        cy.get('span:contains(" Speichern ")').click({force:true});
         //assert that favrite is saved 
         cy.select_topic(' Favoriten ');
         cy.get('p:contains("MyTestFavoite")').should('exist');

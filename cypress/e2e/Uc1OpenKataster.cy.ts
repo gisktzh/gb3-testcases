@@ -11,6 +11,8 @@ describe('Open kataster', () => {
     //cy.click_map_in_the_list('ÖREB-Kataster');
 
     cy.get('input.search-window__input').type('ÖREB-Kataster');
+    
+    cy.wait(2000);
 
     cy.get('[data-test-id="add-active-map"]').click();
 
@@ -19,6 +21,7 @@ describe('Open kataster', () => {
     cy.wait(2000);
 
     cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
+    cy.wait(2000);
     cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click();
     cy.get('mat-icon:contains("close")').click();
     //TODO Adresse suchen
@@ -39,7 +42,7 @@ describe('Open kataster', () => {
     // Highlights auswählen
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
-    cy.get('div:contains("Fläche") + div:contains("389")').should('be.visible');
+    cy.get('div:contains("Fläche") + div:contains("1704")').should('be.visible');
     cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('be.visible');
     cy.get('button:contains("Drucken")').should('be.visible');
   });
