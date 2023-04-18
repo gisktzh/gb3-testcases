@@ -7,13 +7,20 @@ describe('Open kataster', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702555', '1241686');
 
-    cy.select_topic('Raumplanung, Zonenpläne');
+    // cy.select_topic('Raumplanung, Zonenpläne');
+    //cy.click_map_in_the_list('ÖREB-Kataster');
 
-    cy.click_map_in_the_list('ÖREB-Kataster');
+    cy.get('input.search-window__input').type('ÖREB-Kataster');
+
+    cy.get('[data-test-id="add-active-map"]').click();
 
     cy.wait('@kataster');
 
     cy.wait(2000);
+
+    cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
+    cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click();
+    cy.get('mat-icon:contains("close")').click();
     //TODO Adresse suchen
     // Karte muss Liegenschaft markieren
     //wait until request is fully loaded
@@ -32,7 +39,8 @@ describe('Open kataster', () => {
     // Highlights auswählen
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
-    cy.get('div:contains("Fläche") + div:contains("1704")').should('be.visible');
+    cy.get('div:contains("Fläche") + div:contains("389")').should('be.visible');
+    cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('be.visible');
     cy.get('button:contains("Drucken")').should('be.visible');
   });
 });
