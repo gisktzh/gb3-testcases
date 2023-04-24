@@ -11,7 +11,7 @@ describe('Open kataster', () => {
     //cy.click_map_in_the_list('ÖREB-Kataster');
 
     cy.get('input.search-window__input').type('ÖREB-Kataster');
-    
+
     cy.wait(2000);
 
     cy.get('[data-test-id="add-active-map"]').click();

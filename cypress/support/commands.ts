@@ -54,7 +54,6 @@ Cypress.Commands.add('open_url_with_cordinates', (x: string, y: string) => {
   cy.get('span:contains("Überspringen ")').click();
 });
 
-
 Cypress.Commands.add('login', () => {
   cy.get('span:contains("Betriebe")').should('not.be.exist');
 
@@ -67,5 +66,4 @@ Cypress.Commands.add('login', () => {
     cy.get('#user_password').type(password);
     cy.get('input[value="Login"]').click();
   });
-
 });
