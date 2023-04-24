@@ -21,7 +21,8 @@ describe('Open kataster', () => {
     cy.wait(2000);
 
     cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
-    cy.wait(2000);
+    cy.wait(5000);
+    cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
     cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click();
     cy.get('mat-icon:contains("close")').click();
     //TODO Adresse suchen
