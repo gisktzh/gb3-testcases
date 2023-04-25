@@ -1,5 +1,8 @@
 beforeEach(() => {
-  cy.intercept('https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?**').as('results');
+  cy.intercept('https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?**', (req) => {
+    req.url = 'https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?bbox=2702606.63833073%2C1241906.133671923%2C2702606.63833073%2C1241906.133671923&queryLayers=info_stehgewaesser%2Cinfo_fliessgewaessername%2Cinfo_fliessgewaessernummer%2Cinfo_fliessgewaessereigenschaften%2Cgemeindegrenzen%2Cgeplante_revitalisierung%2Crevitalisierungsnutzen'
+    req.continue();
+  }).as('results');
 });
 
 describe('template spec', () => {

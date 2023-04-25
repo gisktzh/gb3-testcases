@@ -60,6 +60,7 @@ Cypress.Commands.add('login', () => {
   cy.get('span:contains("Login")').click();
 
   cy.origin('https://maps.zh.ch', () => {
+    cy.reload();
     const userName: string = Cypress.env('eIAM_username') as string;
     const password: string = Cypress.env('eIAM_password') as string;
     cy.get('#user_login').type(userName);

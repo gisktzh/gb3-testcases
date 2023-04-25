@@ -1,5 +1,8 @@
 beforeEach(() => {
-  cy.intercept('https://maps.zh.ch/v3/topics/OerebKatasterZH/feature_info?**').as('results');
+  cy.intercept('https://maps.zh.ch/v3/topics/OerebKatasterZH/feature_info?**', (req) => {
+    req.url = 'https://maps.zh.ch/v3/topics/OerebKatasterZH/feature_info?bbox=2684475.760832849%2C1245468.3534489027%2C2684475.760832849%2C1245468.3534489027&queryLayers=DPRSF%2CRESF'
+    req.continue();
+  }).as('results');
   cy.intercept('**/OerebKatasterZH?**').as('kataster');
 });
 
@@ -43,7 +46,7 @@ describe('Open kataster', () => {
     // Highlights auswählen
     cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
     //Pruefe Daten
-    cy.get('div:contains("Fläche")').should('be.visible');
+    cy.get('div:contains("Fläche") + div:contains("389")').should('be.visible');
     cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('be.visible');
     cy.get('button:contains("Drucken")').should('be.visible');
   });
