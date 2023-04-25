@@ -68,3 +68,4 @@ Cypress.Commands.add('login', () => {
     cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/');
   });
 });
+
