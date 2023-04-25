@@ -65,5 +65,6 @@ Cypress.Commands.add('login', () => {
     cy.get('#user_login').type(userName);
     cy.get('#user_password').type(password);
     cy.get('input[value="Login"]').click();
+    cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/');
   });
 });
