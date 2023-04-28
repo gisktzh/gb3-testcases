@@ -39,12 +39,12 @@ describe('Open kataster', () => {
       expect(xhr.response.body).to.have.property('feature_info');
     });
 
-    cy.get('h1:contains("Resultate")').should('exist').and('be.visible');
+    cy.get('h1:contains("Info")').should('exist');
 
-    cy.get('span:contains("OerebKatasterZH")', {timeout: 20000}).should('be.visible').click();
+    cy.get('feature-info-item:contains("ÖREB-Kataster")', {timeout: 20000}).should('be.visible').click();
 
     // Highlights auswählen
-    cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').click();
+    cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').should('be.visible');
     //Pruefe Daten
     cy.get('div:contains("Fläche") + div:contains("389")').should('be.visible');
     cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('be.visible');
