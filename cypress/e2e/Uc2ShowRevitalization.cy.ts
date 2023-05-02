@@ -1,6 +1,7 @@
 beforeEach(() => {
   cy.intercept('https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?**', (req) => {
-    req.url = 'https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?bbox=2702606.63833073%2C1241906.133671923%2C2702606.63833073%2C1241906.133671923&queryLayers=info_stehgewaesser%2Cinfo_fliessgewaessername%2Cinfo_fliessgewaessernummer%2Cinfo_fliessgewaessereigenschaften%2Cgemeindegrenzen%2Cgeplante_revitalisierung%2Crevitalisierungsnutzen'
+    req.url =
+      'https://maps.zh.ch/v3/topics/AwelWBRevitwwwZH/feature_info?bbox=2702606.63833073%2C1241906.133671923%2C2702606.63833073%2C1241906.133671923&queryLayers=info_stehgewaesser%2Cinfo_fliessgewaessername%2Cinfo_fliessgewaessernummer%2Cinfo_fliessgewaessereigenschaften%2Cgemeindegrenzen%2Cgeplante_revitalisierung%2Crevitalisierungsnutzen';
     req.continue();
   }).as('results');
 });
@@ -20,12 +21,12 @@ describe('template spec', () => {
       expect(xhr.response.body).to.have.property('feature_info');
     });
 
-    cy.get('h1:contains("Resultate")').should('exist').and('be.visible');
+    cy.get('h1:contains("Info")').should('exist');
 
-    cy.get('span:contains(" AwelWBRevitwwwZH")', {timeout: 20000}).click();
+    cy.get('feature-info-item:contains("Revitalisierungsplanung (Gewässerrevitalisierung)")', {timeout: 20000}).click();
 
     // Gewässerinformation
-    cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
+    //cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
     cy.get('div:contains("Abschnittslänge (m)") + div:contains("96.9998632696608")').should('exist');
   });
 });

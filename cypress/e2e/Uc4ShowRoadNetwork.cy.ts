@@ -15,7 +15,7 @@ describe('template spec', () => {
       expect(xhr.response.body).to.have.property('feature_info');
     });
 
-    cy.get('span:contains("TBAZH")').should('be.visible').click();
+    cy.get('feature-info-item:contains("Strassennetz")').should('be.visible').click();
     cy.get('div:contains("Strassentyp") + div:contains("Kantonale Nebenstrassen")').should('be.visible');
     // Verkehrstehnik
     // Infos asserten
