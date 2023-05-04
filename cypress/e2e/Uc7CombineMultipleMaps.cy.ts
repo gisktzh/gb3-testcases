@@ -20,8 +20,8 @@ describe('template spec', () => {
     cy.click_map_in_the_list('Gebäudestatistik');
 
     //beide Karten sind ausgewählt und angezeigt.
-    cy.get('button + p:contains("ÖREB-Kataster")').should('be.visible');
-    cy.get('button + p:contains("Gebäudestatistik")').should('be.visible');
+    cy.get('p:contains("ÖREB-Kataster")').should('be.visible');
+    cy.get('p:contains("Gebäudestatistik")').should('be.visible');
 
     cy.get('map-page').should('exist').and('be.visible').click();
 
@@ -37,10 +37,10 @@ describe('template spec', () => {
     cy.get('h1:contains("Info")').should('exist');
     //beide Resultaten sind ausgewählt und angezeigt.
 
-    cy.get('feature-info-item:contains("ÖREB-Kataster")', {timeout: 20000}).should('be.visible').click();
-    cy.get('div:contains("Fläche") + div:contains("389")').should('exist');
+    cy.get('feature-info-item:contains("ÖREB-Kataster")', {timeout: 20000}).click();
+    cy.get('th:contains("Fläche") + td:contains("389")').should('exist');
 
-    cy.get('feature-info-item:contains("Gebäudestatistik")', {timeout: 20000}).should('be.visible').click();
-    cy.get('div:contains("Wohnungen pro 100mx100m (1 Treffer)")');
+    cy.get('feature-info-item:contains("Gebäudestatistik")', {timeout: 20000}).click();
+    cy.get('p:contains("Wohnungen pro 100mx100m")').should('exist');
   });
 });

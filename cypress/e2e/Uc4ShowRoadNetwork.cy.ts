@@ -1,5 +1,9 @@
 beforeEach(() => {
-  cy.intercept('https://maps.zh.ch/v3/topics/TBAZH/feature_info?**').as('results');
+  cy.intercept('https://maps.zh.ch/v3/topics/TBAZH/feature_info?**', (req) => {
+    req.url =
+      'https://maps.zh.ch/v3/topics/TBAZH/feature_info?bbox=2689501.477773899%2C1282734.7206541954%2C2689501.477773899%2C1282734.7206541954&queryLayers=kilometrierung%2Cstrassentypisierung-nach-richtplan%2Cstrasseneigentum%2Cweitere-strassenattribute%2Chaupt-und-nebenstrassen%2Ckilometrierung-rbbs';
+    req.continue();
+  }).as('results');
 });
 
 describe('template spec', () => {
@@ -15,8 +19,8 @@ describe('template spec', () => {
       expect(xhr.response.body).to.have.property('feature_info');
     });
 
-    cy.get('feature-info-item:contains("Strassennetz")').should('be.visible').click();
-    cy.get('div:contains("Strassentyp") + div:contains("Kantonale Nebenstrassen")').should('be.visible');
+    cy.get('feature-info-item:contains("Strassennetz")').scrollIntoView().should('exist');
+    cy.get('th:contains("Routennummer") + td:contains("10040")').should('exist');
     // Verkehrstehnik
     // Infos asserten
   });

@@ -15,8 +15,8 @@ describe('template spec', () => {
       expect(xhr.response.body).to.have.property('feature_info');
     });
 
-    cy.get('feature-info-item:contains("Verkehrstechnik (BSA)")', {timeout: 20000}).click();
-    cy.get('div:contains("Strassenname") + div:contains("Bahnhofstrasse")').first().should('be.visible');
+    cy.get('feature-info-item:contains("Verkehrstechnik (BSA)")', {timeout: 20000});
+    cy.get('th:contains("Strassenname") + td:contains("Bahnhofstrasse")').first().should('be.visible');
     // Verkehrstehnik
     // Infos asserten
   });

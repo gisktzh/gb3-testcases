@@ -7,7 +7,8 @@ describe('template spec', () => {
     cy.select_topic(' Raumplanung, Zonenpläne ');
     cy.click_map_in_the_list('Gebäudealter');
     cy.wait(2000);
-    cy.get('button:contains("arrow_right")').click();
+    cy.get('div.active-map-item-header > [data-test-id="show-layers-of-the-map"] > mat-icon').click({force: true});
+    cy.get('span:contains("Einstellungen")').click();
     cy.get('span:contains("Attributfilter")').click();
     cy.get('h3:contains("Gebäudealter")').should('be.visible');
     cy.get('label:contains("Gewerbe und Verwaltung")').click();

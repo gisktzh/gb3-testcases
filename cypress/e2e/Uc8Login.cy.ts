@@ -14,7 +14,7 @@ describe('Login', () => {
     //assert map Betriebe(is visible just for loged in user) is visible after log in
     cy.select_topic('Bauten');
     cy.click_map_in_the_list('Betriebe').click();
-    cy.get('button + p:contains("Betriebe")').should('be.visible');
+    cy.get('p:contains("Betriebe")').should('be.visible');
 
     cy.get('span:contains("GB3 User View")').should('be.visible').click();
     cy.get('span:contains("Logout")').should('be.visible');

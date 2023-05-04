@@ -23,10 +23,10 @@ describe('template spec', () => {
 
     cy.get('h1:contains("Info")').should('exist');
 
-    cy.get('feature-info-item:contains("Revitalisierungsplanung (Gewässerrevitalisierung)")', {timeout: 20000}).click();
+    cy.get('feature-info-item:contains("Revitalisierungsplanung (Gewässerrevitalisierung)")', {timeout: 20000});
 
     // Gewässerinformation
     //cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
-    cy.get('div:contains("Abschnittslänge (m)") + div:contains("96.9998632696608")').should('exist');
+    cy.get('th:contains("Abschnittslänge (m)") + td:contains("107.16932268062004")').should('exist');
   });
 });

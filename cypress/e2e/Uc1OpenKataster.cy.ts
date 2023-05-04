@@ -14,7 +14,7 @@ describe('Open kataster', () => {
     // cy.select_topic('Raumplanung, Zonenpläne');
     //cy.click_map_in_the_list('ÖREB-Kataster');
 
-    cy.get('input.search-window__input').type('ÖREB-Kataster');
+    cy.get('input.search-window__searchbar__input').type('ÖREB-Kataster');
 
     cy.wait(2000);
 
@@ -24,9 +24,9 @@ describe('Open kataster', () => {
 
     cy.wait(2000);
 
-    cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
+    cy.get('input.search-window__searchbar__input').clear().type('Fröhlichstrasse 50');
     cy.wait(5000);
-    cy.get('input.search-window__input').clear().type('Fröhlichstrasse 50');
+    cy.get('input.search-window__searchbar__input').clear().type('Fröhlichstrasse 50');
     cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click();
     cy.get('mat-icon:contains("close")').click();
     //TODO Adresse suchen
@@ -45,10 +45,10 @@ describe('Open kataster', () => {
     cy.get('feature-info-item:contains("ÖREB-Kataster")', {timeout: 20000}).should('be.visible').click();
 
     // Highlights auswählen
-    cy.get('div:contains("ÖREB-Kataster (1 Treffer)") + b + button').should('be.visible');
+    cy.get('label:contains(" Markieren: ")').should('be.visible').click();
     //Pruefe Daten
-    cy.get('div:contains("Fläche") + div:contains("389")').should('exist');
-    cy.get('div:contains("Vollstaendigkeit") + div:contains("Vollstaendig")').should('exist');
+    cy.get('th:contains("Fläche") + td:contains("389")').should('exist');
+    cy.get('th:contains("Vollstaendigkeit") + td:contains("Vollstaendig")').should('exist');
     cy.get('button:contains(" Info drucken ")').should('be.visible');
   });
 });
