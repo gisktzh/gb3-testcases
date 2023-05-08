@@ -49,6 +49,9 @@ describe('Open kataster', () => {
     //Pruefe Daten
     cy.get('th:contains("Fläche") + td:contains("389")').should('exist');
     cy.get('th:contains("Vollstaendigkeit") + td:contains("Vollstaendig")').should('exist');
-    cy.get('button:contains(" Info drucken ")').should('be.visible');
+    cy.get('button:contains(" Info drucken ")').should('be.visible').click();
+    cy.on("window:confirm", (str) => {
+      expect(str).to.equal("Abbrechen");
+    });
   });
 });

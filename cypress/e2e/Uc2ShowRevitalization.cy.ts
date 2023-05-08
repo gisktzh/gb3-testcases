@@ -24,9 +24,11 @@ describe('template spec', () => {
     cy.get('h1:contains("Info")').should('exist');
 
     cy.get('feature-info-item:contains("Revitalisierungsplanung (Gewässerrevitalisierung)")', {timeout: 20000});
+    //Objekt markieren
 
     // Gewässerinformation
     //cy.get('div:contains("Gemeindegrenzen (1 Treffer)") + b + button').click();
     cy.get('th:contains("Abschnittslänge (m)") + td:contains("107.16932268062004")').should('exist');
+    cy.get('label:contains("Markieren:")').first().click();
   });
 });
