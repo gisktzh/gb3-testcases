@@ -166,6 +166,219 @@
 			"name": "Search-Api",
 			"item": [
 				{
+					"name": "SearchWithParamter",
+					"item": [
+						{
+							"name": "Search Only Adress",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Adress information is present\", function () {\r",
+											"    let responseJson = pm.response.json();\r",
+											"\r",
+											"\r",
+											"\r",
+											" //Loop through the reults\r",
+											"    for (let i = 0; i < responseJson[0].matches.length; i++) {\r",
+											"    pm.expect(responseJson[0].matches[i].displayString).contain(',');\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+											"    const streetValue = responseJson[0].matches[0].displayString;\r",
+											"    pm.expect(streetValue).not.to.be.empty;\r",
+											"    pm.expect(streetValue).equal(\"Seefeldstrasse 287, 8008 Zürich\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses&term=Seefeldstrasse+287",
+									"protocol": "https",
+									"host": [
+										"gb3-search-api",
+										"icycliff-4b8f6c95",
+										"switzerlandnorth",
+										"azurecontainerapps",
+										"io"
+									],
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "indexes",
+											"value": "fme-addresses"
+										},
+										{
+											"key": "term",
+											"value": "Seefeldstrasse+287"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search adress+town",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Adress information is present\", function () {\r",
+											"    let responseJson = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+											"    const streetMatch = responseJson[0].matches[0].displayString;\r",
+											"    const townMatch = responseJson[1].matches[0].displayString;\r",
+											"    pm.expect(streetMatch).not.to.be.empty;\r",
+											"    pm.expect(streetMatch).equal(\"Seefeldstrasse 287, 8008 Zürich\");\r",
+											"    pm.expect(townMatch).not.to.be.empty;\r",
+											"    pm.expect(townMatch).equal(\"Landesgrenzstein 287\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=fme-addresses%2Cfme-places&term=Seefeldstrasse+287%2C+8008+Z%C3%BCrich",
+									"protocol": "https",
+									"host": [
+										"gb3-search-api",
+										"icycliff-4b8f6c95",
+										"switzerlandnorth",
+										"azurecontainerapps",
+										"io"
+									],
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "indexes",
+											"value": "fme-addresses%2Cfme-places"
+										},
+										{
+											"key": "term",
+											"value": "Seefeldstrasse+287%2C+8008+Z%C3%BCrich"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Grundwasser map object",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Object information is present\", function () {\r",
+											"    let responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+											"    const ObjectVaue = responseJson[0].matches[0].displayString;\r",
+											"    pm.expect(ObjectVaue).not.to.be.empty;\r",
+											"    pm.expect(ObjectVaue).equal(\"b 15-0003\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=Fassung&term=b+15-0003",
+									"protocol": "https",
+									"host": [
+										"gb3-search-api",
+										"icycliff-4b8f6c95",
+										"switzerlandnorth",
+										"azurecontainerapps",
+										"io"
+									],
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "indexes",
+											"value": "Fassung"
+										},
+										{
+											"key": "term",
+											"value": "b+15-0003"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Strassennetz",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Object information is present\", function () {\r",
+											"    let responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+											"    const ObjectVaue = responseJson[0].matches[0].displayString;\r",
+											"    pm.expect(ObjectVaue).not.to.be.empty;\r",
+											"    pm.expect(ObjectVaue).equal(\"A1 E WA-ZH 65.D Autobahn Anschluss 0 0.3435\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://gb3-search-api.icycliff-4b8f6c95.switzerlandnorth.azurecontainerapps.io/search?indexes=Strkm&term=A1+E+WA-ZH+65.D+Autobahn+Anschluss+0+0.3435",
+									"protocol": "https",
+									"host": [
+										"gb3-search-api",
+										"icycliff-4b8f6c95",
+										"switzerlandnorth",
+										"azurecontainerapps",
+										"io"
+									],
+									"path": [
+										"search"
+									],
+									"query": [
+										{
+											"key": "indexes",
+											"value": "Strkm"
+										},
+										{
+											"key": "term",
+											"value": "A1+E+WA-ZH+65.D+Autobahn+Anschluss+0+0.3435"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "PreRequestForActivation",
 					"event": [
 						{
@@ -228,16 +441,10 @@
 									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"287\");\r",
-									"    pm.expect(streetValue).equal(\"Seefeldstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Seefeldstrasse 287, 8008 Zürich\");\r",
 									"});\r",
 									""
 								],
@@ -285,16 +492,10 @@
 									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"57\");\r",
-									"    pm.expect(streetValue).equal(\"Luegislandstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Luegislandstrasse 57, 8051 Zürich\");\r",
 									"});\r",
 									""
 								],
@@ -339,19 +540,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[3].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"17\");\r",
-									"    pm.expect(streetValue).equal(\"Mühlebachstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Horgen\");\r",
+									"    pm.expect(streetValue).equal(\"Mühlebachstrasse 17, 8008 Zürich\");\r",
 									"});\r",
 									""
 								],
@@ -396,21 +590,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"17\");\r",
-									"    pm.expect(streetValue).equal(\"Mühlebachstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
-									"});\r",
-									""
+									"    pm.expect(streetValue).equal(\"Mühlebachstrasse 17, 8008 Zürich\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -453,21 +639,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
-									"    let plz = responseJson.results[0].data.hits.hits[0]._source.plz;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"17\");\r",
-									"    pm.expect(plz).equal(8008);\r",
-									"    pm.expect(streetValue).equal(\"Mühlebachstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Mühlebachstrasse 17, 8008 Zürich\");\r",
 									"});\r",
 									""
 								],
@@ -515,7 +692,7 @@
 									"pm.test(\"Adress information is not present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
 									"    //assert that there is no results;\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).to.eq(0);\r",
+									"    pm.expect(responseJson[0].matches.length).to.eq(0);\r",
 									"});\r",
 									""
 								],
@@ -560,19 +737,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"17\");\r",
-									"    pm.expect(streetValue).equal(\"In der Ey\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"In der Ey 17, 8047 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -616,19 +786,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"2\");\r",
-									"    pm.expect(streetValue).equal(\"Untere Zäune\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Untere Zäune 2, 8001 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -672,19 +835,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"3\");\r",
-									"    pm.expect(streetValue).equal(\"Am Rank\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Am Rank 3, 8001 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -730,16 +886,10 @@
 								"exec": [
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
-									"    const townValue = responseJson.results[0].data.hits.hits[0]._source.town;\r",
-									"    const no = responseJson.results[0].data.hits.hits[0]._source.no;\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(no).not.to.be.empty;\r",
-									"    pm.expect(no).equal(\"50\");\r",
-									"    pm.expect(streetValue).equal(\"Fröhlichstrasse\");\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Fröhlichstrasse 50, 8008 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -785,10 +935,10 @@
 								"exec": [
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[0].data.hits.hits.length).to.eq(10);\r",
-									"    const streetValue = responseJson.results[0].data.hits.hits[0]._source.street;\r",
+									"    pm.expect(responseJson[0].matches.length).to.eq(10);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(streetValue).equal(\"Zürichstrasse\");\r",
+									"    pm.expect(streetValue).equal(\"Zürichstrasse 1, 8124 Maur\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -832,12 +982,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Town information is present\", function () {\r",
+									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[1].data.hits.hits.length).not.to.eq(0);\r",
-									"    const townValue = responseJson.results[1].data.hits.hits[0]._source.name;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).equal(\"Bubikon\");\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(streetValue).equal(\"Zelgwiesstrasse 51a, 8608 Bubikon\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -884,7 +1034,8 @@
 									"pm.test(\"Town information is not present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
 									"    //assert that there is no results;\r",
-									"    pm.expect(responseJson.results[1].data.hits.hits.length).to.eq(0);\r",
+									"        pm.expect(responseJson[0].matches.length).to.eq(0);\r",
+									"\r",
 									"});\r",
 									""
 								],
@@ -931,10 +1082,10 @@
 								"exec": [
 									"pm.test(\"Town information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[1].data.hits.hits.length).not.to.eq(0);\r",
-									"    const townValue = responseJson.results[1].data.hits.hits[0]._source.name;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).equal(\"Zürich\");\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(streetValue).equal(\"Böszelgstrasse 50.2, 8051 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -980,10 +1131,10 @@
 								"exec": [
 									"pm.test(\"Town information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[1].data.hits.hits.length).not.to.eq(0);\r",
-									"    const townValue = responseJson.results[1].data.hits.hits[0]._source.name;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).equal(\"Neu St. Johann\");\r",
+									"    pm.expect(responseJson[1].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[1].matches[0].displayString;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(streetValue).equal(\"Ort Neu St. Johann\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1029,10 +1180,10 @@
 								"exec": [
 									"pm.test(\"Town information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
-									"    pm.expect(responseJson.results[1].data.hits.hits.length).not.to.eq(0);\r",
-									"    const townValue = responseJson.results[1].data.hits.hits[0]._source.name;\r",
-									"    pm.expect(townValue).not.to.be.empty;\r",
-									"    pm.expect(townValue).equal(\"Im Streuli\");\r",
+									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
+									"    pm.expect(streetValue).not.to.be.empty;\r",
+									"    pm.expect(streetValue).equal(\"Im Streuli 1, 8703 Erlenbach ZH\");\r",
 									"});"
 								],
 								"type": "text/javascript"
