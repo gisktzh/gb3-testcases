@@ -36,7 +36,7 @@
 //   }
 // }
 Cypress.Commands.add('click_map_in_the_list', (name_of_the_map: string) => {
-  cy.get('span:contains("' + name_of_the_map + '") > button[data-test-id="add-active-map"]')
+  cy.get('span:contains("' + name_of_the_map + '") > div > button[data-test-id="add-active-map"]')
     .first()
     .click();
 });
