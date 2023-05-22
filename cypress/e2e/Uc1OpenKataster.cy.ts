@@ -46,6 +46,7 @@ describe('Open kataster', () => {
 
     // Highlights auswählen
     cy.get('label:contains(" Markieren: ")').should('be.visible').click();
+    cy.compareSnapshot('map-page', 0.1);
     //Pruefe Daten
     cy.get('th:contains("Fläche") + td:contains("389")').should('exist');
     cy.get('th:contains("Vollstaendigkeit") + td:contains("Vollstaendig")').should('exist');
