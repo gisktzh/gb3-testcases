@@ -1,4 +1,3 @@
 describe('template spec', () => {
-  it('passes', () => {
-  });
+  it('passes', () => {});
 });

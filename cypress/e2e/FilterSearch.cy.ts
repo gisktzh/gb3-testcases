@@ -7,11 +7,9 @@ beforeEach(() => {
   cy.intercept('**/OerebKatasterZH?**').as('kataster');
 });
 
-
 describe('Test filter search', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702555', '1241686');
-
 
     cy.get('input.search-window__searchbar__input').type('Grundwasserkarte (Hochwasserstand)');
 
@@ -22,7 +20,7 @@ describe('Test filter search', () => {
     cy.wait(2000);
     //activate filter lits
     //cy.get('mat-icon:contains("filter_list")').click()
-   // cy.get('div.mdc-checkbox:contains("Adresse") > div').click()
+    // cy.get('div.mdc-checkbox:contains("Adresse") > div').click()
 
     cy.get('input.search-window__searchbar__input').clear().type('b 15-0003');
     cy.wait(5000);
@@ -39,6 +37,5 @@ describe('Test filter search', () => {
 
     cy.get('h1:contains("Info")').should('exist');
     cy.get('th:contains("Nummer") + td:contains("b 15")').should('exist');
-
   });
 });

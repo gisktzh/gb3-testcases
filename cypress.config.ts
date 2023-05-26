@@ -1,6 +1,5 @@
-import { defineConfig } from 'cypress';
+import {defineConfig} from 'cypress';
 const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin');
-
 
 export default defineConfig({
   reporter: 'mocha-junit-reporter',
