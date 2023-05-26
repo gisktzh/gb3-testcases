@@ -543,7 +543,7 @@
 									"pm.test(\"Adress information is present\", function () {\r",
 									"    let responseJson = pm.response.json();\r",
 									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
-									"    const streetValue = responseJson[0].matches[3].displayString;\r",
+									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
 									"    pm.expect(streetValue).equal(\"Mühlebachstrasse 17, 8008 Zürich\");\r",
 									"});\r",
@@ -938,7 +938,7 @@
 									"    pm.expect(responseJson[0].matches.length).to.eq(10);\r",
 									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(streetValue).equal(\"Zürichstrasse 1, 8124 Maur\");\r",
+									"    pm.expect(streetValue).equal(\"Zürichstrasse 1, 8610 Uster\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -987,7 +987,7 @@
 									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
 									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(streetValue).equal(\"Zelgwiesstrasse 51a, 8608 Bubikon\");\r",
+									"    pm.expect(streetValue).equal(\"Weidlistrasse 8g, 8608 Bubikon\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1085,7 +1085,7 @@
 									"    pm.expect(responseJson[0].matches.length).not.to.eq(0);\r",
 									"    const streetValue = responseJson[0].matches[0].displayString;\r",
 									"    pm.expect(streetValue).not.to.be.empty;\r",
-									"    pm.expect(streetValue).equal(\"Böszelgstrasse 50.2, 8051 Zürich\");\r",
+									"    pm.expect(streetValue).equal(\"Frohburgstrasse 230, 8057 Zürich\");\r",
 									"});"
 								],
 								"type": "text/javascript"
