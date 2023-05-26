@@ -7,6 +7,7 @@ describe('template spec', () => {
     cy.open_url_with_cordinates('2702568', '1242020');
     cy.select_topic('Verkehr');
     cy.click_map_in_the_list('Verkehrstechnik (BSA)');
+    cy.wait(10000);
 
     cy.get('map-page').should('exist').and('be.visible').click();
 

@@ -1,15 +1,21 @@
 describe('template spec', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702555', '1241686');
-    cy.get('.basemap-selector').click();
+    cy.wait(3000)
+    cy.get('basemap-selector > div > button').click({force: true});
     //User wählt Hinergrund
     cy.get('img[alt="Digitales Terrainmodell"]').click({force: true});
+    cy.wait(3000)
     //richtige Hintergrund ist angezeigt.
-    cy.get('img[alt="Aktuelle Hintergrundkarte"]').should('have.attr', 'src', 'assets/images/basemaps/aredtmbackgroundzh.png');
+    cy.get('basemap-selector > div > button').should('have.attr', 'style').then(style => {
+      expect(style).to.contain('assets/images/basemaps/aredtmbackgroundzh.png');
+    });
     //User wählt andere Hinergrund
-    cy.get('.basemap-selector').click();
+    cy.get('basemap-selector > div > button').click({force: true});
     cy.get('img[alt="Landeskarte"]').click({force: true});
     //richtige Hintergrund ist angezeigt.
-    cy.get('img[alt="Aktuelle Hintergrundkarte"]').should('have.attr', 'src', 'assets/images/basemaps/arelkbackgroundzh.png');
+    cy.get('basemap-selector > div > button').should('have.attr', 'style').then(style => {
+      expect(style).to.contain('assets/images/basemaps/arelkbackgroundzh.png');
+    });
   });
 });

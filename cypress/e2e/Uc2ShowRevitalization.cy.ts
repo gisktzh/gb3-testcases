@@ -11,9 +11,7 @@ describe('template spec', () => {
     cy.open_url_with_cordinates('2702604', '1241901');
     cy.select_topic('Wasser');
     cy.click_map_in_the_list('Revitalisierungsplanung (Gewässerrevitalisierung)');
-
-    cy.wait(2000);
-
+    cy.wait(10000);
     cy.get('map-page').should('exist').and('be.visible').click();
 
     cy.wait('@results').then((xhr) => {

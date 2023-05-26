@@ -9,6 +9,7 @@ beforeEach(() => {
       'https://maps.zh.ch/v3/topics/StatGebZH/feature_info?bbox=2684472.8479644675%2C1245465.5430538866%2C2684472.8479644675%2C1245465.5430538866&queryLayers=umkreis-statistik%2Cgeb%2Cgemeindegrenzen';
     req.continue();
   }).as('results2');
+  cy.intercept('**/OerebKatasterZH?**').as('kataster');
 });
 
 describe('template spec', () => {
@@ -18,11 +19,12 @@ describe('template spec', () => {
     cy.select_topic(' Raumplanung, Zonenpläne ');
     cy.click_map_in_the_list('ÖREB-Kataster');
     cy.click_map_in_the_list('Gebäudestatistik');
-
+    cy.wait(10000);
     //beide Karten sind ausgewählt und angezeigt.
     cy.get('p:contains("ÖREB-Kataster")').should('be.visible');
     cy.get('p:contains("Gebäudestatistik")').should('be.visible');
 
+    cy.wait('@kataster');
     cy.get('map-page').should('exist').and('be.visible').click();
 
     cy.wait('@results1').then((xhr) => {
