@@ -10,7 +10,9 @@ beforeEach(() => {
 describe('Open kataster', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702555', '1241686');
-
+    cy.get('div[id="mat-snack-bar-container-live-0"] > div > page-notification > div:nth-of-type(2) > button > mat-icon').click({
+      force: true
+    });
     // cy.select_topic('Raumplanung, Zonenpläne');
     //cy.click_map_in_the_list('ÖREB-Kataster');
 
