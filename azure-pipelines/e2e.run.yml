@@ -1,6 +1,12 @@
 trigger:
-  - main
-
+  - none
+schedules:
+  - cron: "0 */6 * * *"
+    displayName: Every 6 hours build
+    branches:
+      include:
+      - main
+    always: true
 stages:
   - stage: e2e_testing_stage
     displayName: 'E2E Testing'
