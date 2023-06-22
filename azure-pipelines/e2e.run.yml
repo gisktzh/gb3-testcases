@@ -1,8 +1,8 @@
 trigger:
   - none
 schedules:
-  - cron: "0 */6 * * *"
-    displayName: Every 6 hours build
+  - cron: "0 */12 * * *"
+    displayName: Every 12 hours build
     branches:
       include:
       - main
