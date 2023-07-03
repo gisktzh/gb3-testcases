@@ -52,7 +52,7 @@ Cypress.Commands.add('select_topic', (name_of_the_topic: string) => {
 });
 
 Cypress.Commands.add('open_url_with_cordinates', (x: string, y: string) => {
-  cy.visit((baseUrl as string) + 'maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
+  cy.visit(baseUrl + 'maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
   cy.get('span:contains("Überspringen ")').click();
 });
 
