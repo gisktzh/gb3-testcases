@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+// Example usage in a Cypress test
+const baseUrl = Cypress.env('gb3BaseUrl') as string;
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -50,7 +52,7 @@ Cypress.Commands.add('select_topic', (name_of_the_topic: string) => {
 });
 
 Cypress.Commands.add('open_url_with_cordinates', (x: string, y: string) => {
-  cy.visit('https://calm-plant-0ecbec603.2.azurestaticapps.net/maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
+  cy.visit((baseUrl as string) + 'maps?x=' + x + '&y=' + y + '&scale=251&basemap=arelkbackgroundzh');
   cy.get('span:contains("Überspringen ")').click();
 });
 
