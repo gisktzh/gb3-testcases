@@ -1,12 +1,12 @@
 beforeEach(() => {
   cy.intercept('https://maps.zh.ch/gb3/v0/topics/StatGebAlterZH/feature_info?**', (req) => {
-    req.url = 
-    'https://maps.zh.ch/gb3/v0/topics/StatGebAlterZH/feature_info?bbox=2682784.78639677%2C1250651.5551960485%2C2682784.78639677%2C1250651.5551960485&queryLayers=geb-alter_wohnen'
+    req.url =
+      'https://maps.zh.ch/gb3/v0/topics/StatGebAlterZH/feature_info?bbox=2682784.78639677%2C1250651.5551960485%2C2682784.78639677%2C1250651.5551960485&queryLayers=geb-alter_wohnen';
     req.continue();
   }).as('results1');
   cy.intercept('https://maps.zh.ch/gb3/v0/topics/AreRpMagZH/feature_info?**', (req) => {
     req.url =
-    'https://maps.zh.ch/gb3/v0/topics/AreRpMagZH/feature_info?bbox=2682784.78639677%2C1250651.5551960485%2C2682784.78639677%2C1250651.5551960485&queryLayers=mag_gemeinden'
+      'https://maps.zh.ch/gb3/v0/topics/AreRpMagZH/feature_info?bbox=2682784.78639677%2C1250651.5551960485%2C2682784.78639677%2C1250651.5551960485&queryLayers=mag_gemeinden';
     req.continue();
   }).as('results2');
 });

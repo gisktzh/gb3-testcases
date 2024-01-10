@@ -61,11 +61,11 @@ Cypress.Commands.add('login', () => {
   cy.get('span:contains("Login")').click();
   // if domain is different from the baseUrl
   //cy.origin('https://maps.zh.ch', () => {
-    const userName: string = Cypress.env('eIAM_username') as string;
-    const password: string = Cypress.env('eIAM_password') as string;
-    cy.get('#user_login').type(userName);
-    cy.get('#user_password').type(password);
-    cy.get('input[value="Login"]').click();
-    //cy.visit(baseUrl);
- // });
+  const userName: string = Cypress.env('eIAM_username') as string;
+  const password: string = Cypress.env('eIAM_password') as string;
+  cy.get('#user_login').type(userName);
+  cy.get('#user_password').type(password);
+  cy.get('input[value="Login"]').click();
+  //cy.visit(baseUrl);
+  // });
 });

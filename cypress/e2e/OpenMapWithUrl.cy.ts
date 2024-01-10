@@ -3,7 +3,7 @@ describe('template spec', () => {
     const baseUrl = Cypress.env('gb3BaseUrl') as string;
     //visit with selected maps
     cy.visit(baseUrl + 'maps?initialMapIds=OrthoZH,AVfarbigZH');
-  //  cy.get('span:contains("Überspringen")').click();
+    //  cy.get('span:contains("Überspringen")').click();
     cy.get('span:contains("Legende")').should('be.visible').click();
     cy.get('h1:contains("Legende")').should('exist');
     cy.get('span:contains(" Amtliche Vermessung in Farbe ")').should('be.visible');

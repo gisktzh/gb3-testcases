@@ -1,20 +1,49 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Cypress/Postman tests for Gb3
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Getting Started
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Download and install Node.js and npm from https://nodejs.org/.
+Verify the installation by running the following commands in your command prompt or terminal:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```bash
+node --version
+npm --version
+```
+
+Download and install Git from https://git-scm.com/.
+Verify the installation by running the following command:
+
+```bash
+git --version
+```
+## Build and Test
+
+Open your command prompt or terminal.
+
+Install Cypress using npm:
+
+```bash
+npm i
+```
+Now that Cypress is installed, you can run your tests using the following steps:
+
+
+### Launch Cypress using the following command:
+
+```bash
+npx cypress open
+```
+This will open the Cypress Test Runner. Click on a test file to run the tests in that file or click "Run all specs" to run all tests.
+
+### Headless Mode
+If you prefer to run Cypress tests in headless mode (without the graphical Test Runner), you can use the following command:
+
+```bash
+npx cypress run
+```
+
+### Modify base URL to test in different environments
+
+Open cypress.config.ts and modify **const gb3BaseUrl**
+

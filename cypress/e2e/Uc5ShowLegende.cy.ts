@@ -11,6 +11,6 @@ describe('template spec', () => {
     cy.wait(5000);
     // Karte wird abgeschaltet, Legende wird richtig angezeigt.
     cy.get('[data-test-id="delete"]').last().click({force: true});
-    cy.get('span:contains("Legende")').should('exist')
+    cy.get('span:contains("Legende")').should('exist');
   });
 });
