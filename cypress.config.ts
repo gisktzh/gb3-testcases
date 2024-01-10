@@ -1,8 +1,10 @@
 import {defineConfig} from 'cypress';
 const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin');
-const gb3BaseUrl = 'https://calm-plant-0ecbec603.2.azurestaticapps.net/';
+const gb3BaseUrl = 'https://geo.zh.ch/';
 
 export default defineConfig({
+  viewportWidth: 1920,
+  viewportHeight: 1280,
   reporter: 'mocha-junit-reporter',
   reporterOptions: {
     mochaFile: 'cypress/results/gb3-test-output-[hash].xml',

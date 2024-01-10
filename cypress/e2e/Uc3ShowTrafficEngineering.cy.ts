@@ -5,7 +5,7 @@ beforeEach(() => {
 describe('template spec', () => {
   it('passes', () => {
     cy.open_url_with_cordinates('2702568', '1242020');
-    cy.select_topic('Verkehr');
+    cy.get('input[placeholder="Karten und Layer filtern"]').type('Verkehrstechnik (BSA)');
     cy.click_map_in_the_list('Verkehrstechnik (BSA)');
     cy.wait(10000);
 
