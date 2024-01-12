@@ -46,4 +46,3 @@ npx cypress run
 ### Modify base URL to test in different environments
 
 Open cypress.config.ts and modify **const gb3BaseUrl**
-
