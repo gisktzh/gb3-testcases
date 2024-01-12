@@ -17,7 +17,7 @@ stages:
         pool:
           vmImage: 'ubuntu-latest'
         steps:
-          - template: e2e.testing.yaml
+          - template: e2e.testing.yml
             parameters:
               browserType: chrome
   - stage: e2e_testing_stage_edge
@@ -28,7 +28,7 @@ stages:
         pool:
           vmImage: 'ubuntu-latest'
         steps:
-          - template: e2e.testing.yaml
+          - template: e2e.testing.yml
             parameters:
               browserType: edge
 # add additional stages for testing other browsers
