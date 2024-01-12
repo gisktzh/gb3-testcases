@@ -1,23 +1,34 @@
 trigger:
   - none
+schedules:
+#  - cron: '0 18 * * *'  # summer time
+  - cron: '0 19 * * *'  # winter time
+    displayName: 'Run cypress tests on 20:00 daily build'
+    branches:
+      include:
+      - main
+    always: true
 stages:
-  - stage: e2e_testing_stage
-    displayName: 'E2E Testing'
+  - stage: e2e_testing_stage_chrome
+    displayName: 'Chrome E2E Testing'
     jobs:
-      - job: e2e_testing_job_electron
-        displayName: 'Run E2E tests in electron'
-        pool:
-          vmImage: 'ubuntu-latest'
-        steps:
-          - template: e2e.testing.yml
-            parameters:
-              browserType: electron 
       - job: e2e_testing_job_chrome
-        displayName: 'Run E2E tests in chrome'
+        displayName: 'Run E2E tests in Chrome'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
-          - template: e2e.testing.yml
+          - template: e2e.testing.yaml
             parameters:
               browserType: chrome
-    # add additional stages for testing other browsers
+  - stage: e2e_testing_stage_edge
+    displayName: 'Edge E2E Testing'
+    jobs:
+      - job: e2e_testing_job_firefox
+        displayName: 'Run E2E tests in Edge'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - template: e2e.testing.yaml
+            parameters:
+              browserType: edge
+# add additional stages for testing other browsers
