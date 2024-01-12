@@ -13,11 +13,10 @@ describe('Test filter search', () => {
     cy.get('input[placeholder="Karten und Layer filtern"]').type('Grundwasserkarte (Hochwasserstand)');
     cy.click_map_in_the_list('Grundwasserkarte (Hochwasserstand)');
 
-    
     cy.wait(5000);
     cy.get('input[placeholder="Suchen nach Adressen, Orten, Karten und mehr..."]').clear().type('b 15-0003');
     cy.get('mat-card-content:contains("b 15-0003")').should('be.visible').click();
-   //cy.get('mat-icon:contains("close")').click();
+    //cy.get('mat-icon:contains("close")').click();
 
     cy.get('map-page').should('exist').and('be.visible').click();
 

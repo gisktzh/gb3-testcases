@@ -4,7 +4,7 @@ beforeEach(() => {
       'https://maps.zh.ch/gb3/v0/topics/OerebKatasterZH/feature_info?bbox=2684475.760832849%2C1245468.3534489027%2C2684475.760832849%2C1245468.3534489027&queryLayers=DPRSF%2CRESF';
     req.continue();
   }).as('results');
- // cy.intercept('**/OerebKatasterZH?**').as('kataster');
+  // cy.intercept('**/OerebKatasterZH?**').as('kataster');
 });
 
 describe('Open kataster', () => {
@@ -13,22 +13,21 @@ describe('Open kataster', () => {
     cy.visit(baseUrl + 'maps?initialMapIds=OerebKatasterZH');
 
     //cy.get('div[id="mat-snack-bar-container-live-0"] > div > page-notification > div:nth-of-type(2) > button > mat-icon').click({
-     // force: true
-  //  });
+    // force: true
+    //  });
     // cy.select_topic('Raumplanung, Zonenpläne');
     //cy.click_map_in_the_list('ÖREB-Kataster');
 
-   // cy.get('input.search-window__searchbar__input').type('ÖREB-Kataster');
+    // cy.get('input.search-window__searchbar__input').type('ÖREB-Kataster');
 
-  //  cy.wait(2000);
+    //  cy.wait(2000);
 
-  //  cy.get('[data-test-id="add-active-map"]').click();
+    //  cy.get('[data-test-id="add-active-map"]').click();
 
-  //  cy.wait('@kataster');
-
+    //  cy.wait('@kataster');
 
     cy.get('input[placeholder="Suchen nach Adressen, Orten, Karten und mehr..."]').clear().type('Fröhlichstrasse 50');
-  cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click({force:true});
+    cy.get('mat-card-content:contains("Fröhlichstrasse 50")').click({force: true});
 
     // Karte muss Liegenschaft markieren
     //wait until request is fully loaded
