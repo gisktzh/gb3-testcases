@@ -1,13 +1,5 @@
 trigger:
   - none
-schedules:
-#  - cron: '0 18 * * *'  # summer time
-  - cron: '0 19 * * *'  # winter time
-    displayName: 'Run cypress tests on 20:00 daily build'
-    branches:
-      include:
-      - main
-    always: true
 stages:
   - stage: e2e_testing_stage_chrome
     displayName: 'Chrome E2E Testing'
