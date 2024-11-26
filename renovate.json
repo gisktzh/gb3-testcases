@@ -1,3 +1,31 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "mergeConfidence:all-badges"],
+  "reviewers": ["team:gb3-maintainer"],
+  "automerge": false,
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "groupName": "eslint",
+      "matchPackagePrefixes": ["eslint", "@angular-eslint", "@ngrx/eslint", "@typescript-eslint"]
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["prettier"],
+      "matchUpdateTypes": ["major", "minor"],
+      "prBodyNotes": [
+        ":warning: Possible change of default style; please use `npm run format-all` to re-format all files in the project :warning:"
+      ]
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "<22"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchDepNames": ["node"],
+      "allowedVersions": "<22"
+    }
+  ]
 }
