@@ -7,7 +7,12 @@
     {
       "matchManagers": ["npm"],
       "groupName": "eslint",
-      "matchPackagePrefixes": ["eslint", "@angular-eslint", "@ngrx/eslint", "@typescript-eslint"]
+      "matchPackageNames": [
+        "eslint{/,}**",
+        "@angular-eslint{/,}**",
+        "@ngrx/eslint{/,}**",
+        "@typescript-eslint{/,}**"
+      ]
     },
     {
       "matchManagers": ["npm"],
